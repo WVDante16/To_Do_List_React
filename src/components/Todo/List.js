@@ -2,7 +2,7 @@ import React from 'react';
 
 const List = props => {
 
-    const {items, markAsCompleted} = props; 
+    const {items, markAsCompleted, removeTask} = props; 
 
     return (
         <ul>

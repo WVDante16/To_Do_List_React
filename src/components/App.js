@@ -11,7 +11,6 @@ function App() {
       <Header title="Header" url="https://github.com/" />
       
       <Content>
-        
         <Todo />
       </Content>
       

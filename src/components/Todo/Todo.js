@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {v4 as uuidv4} from 'uuid';
 import List from './List.js';
+import './Todo.css'
 
 class Todo extends Component {
     constructor() {
@@ -32,6 +33,7 @@ class Todo extends Component {
 
     handleOnChange = e => {
         const {target:{value}} = e;
+        
         this.setState({
             task: value
         })
@@ -73,10 +75,12 @@ class Todo extends Component {
 
     removeTask = id => {
         const {items} = this.state;
+        
         const filteredItems = items.filter(
             item => item.id !== id
         )
-
+        
+        console.log(filteredItems);
         this.setState({
             items: filteredItems,
         })
