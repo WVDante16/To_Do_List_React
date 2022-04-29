@@ -11,6 +11,7 @@ const List = props => {
                 <li key={key} className={item.complete ? 'complete' : 'pending'}>
                     {item.task}
                      <div className = 'actions'>
+                         
                          <span 
                             className = {item.complete ? 'hide' : 'done'}
                             onClick = {() => markAsCompleted(item.id)}

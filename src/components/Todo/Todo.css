@@ -29,7 +29,7 @@
     visibility: hidden;
 }
 
-.Todo ul li .complete {
+.Todo ul li.complete {
     background-color: #dff0d8;
 }
 
