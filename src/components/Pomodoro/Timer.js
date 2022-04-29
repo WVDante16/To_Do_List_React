@@ -41,6 +41,8 @@ class Timer extends Component {
                 message: 'WORKING! UnU'
             }
         })
+
+        this.setTime(this.times.defaultTime);
     }
 
     setTimeForShortBreak = () => {
@@ -50,6 +52,8 @@ class Timer extends Component {
                 message: 'Taking a Short Break UwU'
             }
         })
+
+        this.setTime(this.times.shortBreak);
     }
 
     setTimeForLongBreak = () => {
@@ -59,6 +63,53 @@ class Timer extends Component {
                 message: 'Taking a Long Break UwU'
             }
         })
+
+        this.setTime(this.times.longBreak);
+    }
+
+    setTime = (newTime) => {
+        this.restartInterval();
+        this.setState({
+            time: newTime,
+        })
+    }
+
+    restartInterval = () => {
+        clearInterval(this.interval);
+
+        this.interval = setInterval(this.countDown, 1000);
+    }
+
+    countDown = () => {
+        if (this.state.time === 0) {
+            this.setState({
+                alert: {
+                    type: 'Beep',
+                    message: 'Beeeeep',
+                }
+            })
+        }
+        else {
+            this.setState({
+                time: this.state.time - 1,
+            })
+        }
+    }
+
+    displayTimer(seconds) {
+        var minutes = seconds / 60;
+        var segundos = seconds - (minutes * 60);
+        
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+            
+        }
+
+        if (segundos < 10) {
+            segundos = "0" + segundos;
+        }
+        
+        return minutes + ':' + segundos;
     }
 
     render() {
@@ -71,7 +122,7 @@ class Timer extends Component {
                 </div>
 
                 <div className = "timer">
-                    00:00
+                    {displayTimer(time)}
                 </div>
 
                 <div className = "types">
