@@ -100,6 +100,8 @@ class Timer extends Component {
         var min = Math.floor(seconds / 60);
         var sec = (seconds - (min * 60));
 
+        console.log(seconds);
+
         if(min < 10){
             if(sec < 10){
                 return "0" + min + ":0" + sec;

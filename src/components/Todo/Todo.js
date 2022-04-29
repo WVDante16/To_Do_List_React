@@ -64,7 +64,7 @@ class Todo extends Component {
             item => item.id === id
         );
 
-        foundTask.complete = true;
+        foundTask.complete = !foundTask.complete;
 
         this.setState({
             items: [

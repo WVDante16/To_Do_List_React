@@ -30,7 +30,11 @@
 }
 
 .Todo ul li.complete {
+<<<<<<< HEAD
     background-color: #dff0d8;
+=======
+    background-color: #c8e7bb;
+>>>>>>> c8abb390972d9f552a3574a37968a36cfcc8a930
 }
 
 .Todo ul li .actions {
@@ -43,8 +47,13 @@
     cursor: pointer;
 }
 
-.Todo ul li .done {
+.Todo ul li .check {
     color: #79c41d;
+    display: block;
+}
+
+.Todo ul li .uncheck {
+    color: #f8af0a;
     display: block;
 }
 
