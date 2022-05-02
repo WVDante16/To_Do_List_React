@@ -60,7 +60,7 @@ class Timer extends Component {
         this.setState({
             alert: {
                 type: 'longBreak',
-                message: 'Taking a Long Break UwU'
+                message: 'Taking a Long Break UwUr'
             }
         })
 
@@ -97,19 +97,10 @@ class Timer extends Component {
     }
 
     displayTimer(seconds) {
-        var minutes = seconds / 60;
-        var segundos = seconds - (minutes * 60);
+        const m = Math.floor(seconds / 60);
+        const s = seconds % 60;
         
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-            
-        }
-
-        if (segundos < 10) {
-            segundos = "0" + segundos;
-        }
-        
-        return minutes + ':' + segundos;
+        return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
     }
 
     render() {
@@ -122,7 +113,7 @@ class Timer extends Component {
                 </div>
 
                 <div className = "timer">
-                    {displayTimer(time)}
+                    {this.displayTimer(time)}
                 </div>
 
                 <div className = "types">
