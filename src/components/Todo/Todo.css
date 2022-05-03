@@ -30,11 +30,7 @@
 }
 
 .Todo ul li.complete {
-<<<<<<< HEAD
-    background-color: #dff0d8;
-=======
     background-color: #c8e7bb;
->>>>>>> c8abb390972d9f552a3574a37968a36cfcc8a930
 }
 
 .Todo ul li .actions {
