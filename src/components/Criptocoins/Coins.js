@@ -5,68 +5,44 @@ class Coins extends Component {
     constructor() {
         super();
         this.state = {
-            dollars: "",
-            coins: 0,
-            message: "",
-            type: "",
-        }
+            dollars: 0
+        };
     }
-    
+
     handleOnChange = e => {
-        const {target: {value}} = e;
-
-        console.log(value);
-
-        //Evitar que la pagina se recargue presionando enter
-        if(e.keyCode === 13) {
-            e.preventDefault();
-        }
-        
         this.setState({
-            dollars: value
+            dollars:Number(e.target.value)
         });
     }
 
-    handleOnClick = () => {
-        const dollar = this.state.dollars;
-        let text = this.state.message;
-        let clase = this.state.type;
-        let coin = dollar / 10;
-
-        if (dollar % 10 === 0 && dollar > 0) {
-            text = "";
-            clase = "";
+    shouldComponentUpdate(props, state) {
+        if (state.sollars % 10 === 0) {
+            return true
         }
-        else {
-            coin = 0;
-            text = "No aceptamos numeros que no sean multiplos de 10";
-            clase = "Error";
-        }
-
-        this.setState({
-            coins: coin,
-            message: text,
-            type: clase,
-        })
+        return false
     }
 
     render() {
         return (
             <div className="Coins">               
-                <h1>Compra Crypto Coins!</h1>
+                <h1>Compra Cryptocoins</h1>
+                <div className="question">
+                    <p>Cuantos dolares tenes?</p>
+                        <p>
+                            <input 
+                            placeholder='0'
+                            onChange={this.handleOnChange}
+                            type='number'
+                        />
+                    </p>
+                </div>
 
-                <form>
-                    <input 
-                        placeholder = "Dolares a invertir"                             type="number"
-                        value = {this.state.dollars}
-                        onChange={this.handleOnChange}
-                    />
-                    <button onClick = {this.handleOnClick}>Confirmar</button>
-                </form>
-    
-                <h3>Precio de Cripto moneda: $10</h3>
-                <h2>Puedes comprar: {this.state.coins} Crypto coins</h2>
-                <h3 className = {`type ${this.state.type}`}>{this.state.message}</h3>
+                <div className='answer'>
+                    <p>Precio de Cryptocoin: $10</p>
+                    <p>
+                        Puedes comprar <strong>{this.state.dollars/10}</strong> coins.
+                    </p>
+                </div>
             </div>
         );
     }
