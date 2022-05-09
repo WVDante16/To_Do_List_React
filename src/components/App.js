@@ -5,8 +5,9 @@ import Footer from '../shared/layout/Footer';
 import Content from '../shared/layout/Content';
 //import Todo from './Todo/Todo';
 //import Timer from './Pomodoro/Timer';
-import Coins from './Criptocoins/Coins.js';
-import Charthome from './Chart/Charthome';
+//import Coins from './Criptocoins/Coins.js';
+//import Charthome from './Chart/Charthome';
+import Animation from './Animating/Animation';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <Header title="Header" url="https://github.com/" />
       
       <Content>
-        <Charthome />
+        <Animation />
       </Content>
       
       <Footer />
