@@ -34,8 +34,7 @@ class Numbers extends Component{
                     value = {this.state.numbers}
                     onChange = {this.handleNumberChange}
                 />
-
-                {/* Rendering results */}
+                
                 <ul>
                     {
                         results.map((result, i) => (

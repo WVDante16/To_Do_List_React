@@ -19,21 +19,22 @@
     padding: 10px;
     background-color: #282c34;
     color: #60a4d1;
+    border-radius: 30px;
 }
 
 .Numbers ul {
     margin: 0 auto;
     padding: 0;
     list-style: none;
-    width: 522px;
+    width: 400px;
     background-color: #45484e;
     color: #60a4d1;
 }
 
 .Numbers ul li {
-    border-top: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    border-top: 1px solid #718792;
+    border-left: 1px solid #718792;
+    border-right: 1px solid #718792;
     padding: 10px;
 }
 
@@ -42,5 +43,5 @@
 }
 
 .Numbers ul li:last-child {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #718792;
 }
