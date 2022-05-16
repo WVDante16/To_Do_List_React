@@ -1,0 +1,54 @@
+.Calculator {
+    padding: 10px
+}
+
+.Calculator input {
+    width: 500px;
+    height: 60px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    outline: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #282c34;
+    color: #60a4d1;
+    border-radius: 30px;
+}
+
+.Calculator select {
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    outline: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #60a4d1;
+    color: #282c34;
+    border-radius: 30px;
+}
+
+.Calculator p {
+    font-size: 30px;
+    font-weight: bold;
+    color: #282c34;
+}
+
+.Calculator button {
+    background: #60a4d1;
+    border: 1px solid #1e728c;
+    border-radius: 50px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    color: #282c34;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    padding: 10px 20px 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+}
