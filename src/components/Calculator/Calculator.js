@@ -3,65 +3,79 @@ import './Calculator.css';
 
 class Calculator extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            number1: '',
-            number2: '',
-            result: ''
+            number1: 0,
+            number2: 0,
+            result: 0,
+            selector: ''
         }
     }
 
-    handleNumberChange1 = e => {
-        const {target: {value}} = e;
-
+    handleOnChange = e => {
+        const {target: {value, name, type}} = e;
+        const val = type === 'text'? Number(value) : value;
+        
         this.setState({
-            number1: value,
+            [name]: val
         })
-
-        console.log(value)
     }
 
-    handleNumberChange2 = e => {
-        const {target: {value}} = e;
+    handleResult = e => {
+        const {number1, number2, selector} = this.state;
 
         this.setState({
-            number2: value,
+            result: calculateResult(number1, number2, selector)
         })
-
-        console.log(value)
-    }
-
-    //Buttons
-    suma = () => {
-        const value = number1 + number2;
-
-        this.setState({
-            result: value,
-        })
-
-        console.log(value)
     }
 
     render() {
-        const {result} = this.state;
-
         return (
             <div className="Calculator">
                 <input 
-                    type = "number"
+                    onChange = {this.handleOnChange}
+                    name = "number1"
+                    type = "text"
                     value = {this.state.number1}
-                    onChange = {this.handleNumberChange1}
                 />
 
-                <button onClick={this.suma}>+</button>
+                <select name="selector" value={this.state.selector} onChange={this.handleOnChange}>
+                    <option value="addition">+</option>
+                    <option value="substraction">-</option>
+                    <option value="multiplication">x</option>
+                    <option value="division">/</option>
+                </select>
 
                 <input 
-                    type = "number"
+                    onChange = {this.handleOnChange}
+                    name = "number2"
+                    type = "text"
                     value = {this.state.number2}
-                    onChange = {this.handleNumberChange2}
                 />
+
+                <p>
+                    <button onClick={this.handleResult}>=</button>
+                </p>
+
+                <p className="result">{this.state.result}</p>
             </div>
-        )
+        );
+    }
+}
+
+function calculateResult(number1, number2, selector) {
+    switch (selector) {
+        case "addition":
+            return number1 + number2;
+        case "substraction":
+            return number1 - number2;
+        case "multiplication":
+            return number1 * number2;
+        case "division":
+            return (number1 / number2).toFixed(2);
+
+        default:
+            return number1 + number2
     }
 }
 
