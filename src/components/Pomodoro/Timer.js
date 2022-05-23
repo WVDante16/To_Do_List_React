@@ -12,7 +12,9 @@ class Timer extends Component {
                 message: '',
             }, 
 
-            time: 0
+            time: 0,
+            pause: false,
+            running: false
         };
 
         this.times = {
@@ -38,8 +40,10 @@ class Timer extends Component {
         this.setState({
             alert: {
                 type: 'work',
-                message: 'WORKING! UnU'
-            }
+                message: 'WORKING! UnU',
+                running: true
+            },
+            running: true
         })
 
         this.setTime(this.times.defaultTime);
@@ -49,8 +53,9 @@ class Timer extends Component {
         this.setState({
             alert: {
                 type: 'shortBreak',
-                message: 'Taking a Short Break UwU'
-            }
+                message: 'Taking a Short Break UwU',
+            },
+            running: true
         })
 
         this.setTime(this.times.shortBreak);
@@ -60,8 +65,9 @@ class Timer extends Component {
         this.setState({
             alert: {
                 type: 'longBreak',
-                message: 'Taking a Long Break UwUr'
-            }
+                message: 'Taking a Long Break UwUr',
+            },
+            running: true
         })
 
         this.setTime(this.times.longBreak);
@@ -89,11 +95,31 @@ class Timer extends Component {
                 }
             })
         }
-        else {
+        else if (this.state.pause === false) {
             this.setState({
                 time: this.state.time - 1,
             })
         }
+    }
+
+    handlePause = () => {
+        if (this.state.pause === false) {
+            this.setState({
+                pause: true
+            })
+        }
+        else {
+            this.setState({
+                pause: false
+            })
+        }
+    }
+
+    handleReload = () => {
+        this.setState({
+            running: false
+        })
+        window.location.reload()
     }
 
     displayTimer(seconds) {
@@ -138,9 +164,29 @@ class Timer extends Component {
                         Long Break
                     </button>
                 </div>
+
+                <span>
+                    {this.state.running ? (
+                        <div>
+                            <button
+                                className = "pause"
+                                onClick = {this.handlePause}
+                            >
+                            <i className = {this.state.pause ? 'fa fa-play' : 'fa fa-pause'} ></i>   
+                            </button>
+                            <button
+                                className = "restart"
+                                onClick = {this.handleReload}
+                            >
+                                <i class="fa fa-square" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    ) : ''}
+                </span>
             </div>
         )
     }
 }
 
 export default Timer;
+
