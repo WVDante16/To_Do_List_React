@@ -5,19 +5,6 @@ class Calculator extends Component {
     constructor(props) {
         super(props);
         this.state = {
-<<<<<<< HEAD
-            number1: 0,
-            number2: 0,
-            result: 0,
-            selector: ''
-        }
-    }
-
-    handleOnChange = e => {
-        const {target: {value, name, type}} = e;
-        const val = type === 'text'? Number(value) : value;
-        
-=======
             number1: '',
             number2: '',
             operation: '',
@@ -48,11 +35,10 @@ class Calculator extends Component {
     }
 
     handleNumberChange1 = e => {
-        const {target: {value}} = e;
+        const {target: {value, name}} = e;
 
->>>>>>> 1cb635cbbdbb1a188e1e74c045424d1091b4dac3
         this.setState({
-            [name]: val
+            [name]: value
         })
     }
 
@@ -62,39 +48,6 @@ class Calculator extends Component {
         this.setState({
             result: calculateResult(number1, number2, selector)
         })
-<<<<<<< HEAD
-    }
-
-    render() {
-        return (
-            <div className="Calculator">
-                <input 
-                    onChange = {this.handleOnChange}
-                    name = "number1"
-                    type = "text"
-                    value = {this.state.number1}
-                />
-
-                <select name="selector" value={this.state.selector} onChange={this.handleOnChange}>
-                    <option value="addition">+</option>
-                    <option value="substraction">-</option>
-                    <option value="multiplication">x</option>
-                    <option value="division">/</option>
-                </select>
-
-                <input 
-                    onChange = {this.handleOnChange}
-                    name = "number2"
-                    type = "text"
-                    value = {this.state.number2}
-                />
-
-                <p>
-                    <button onClick={this.handleResult}>=</button>
-                </p>
-
-                <p className="result">{this.state.result}</p>
-=======
     }
 
     handleChangeOperation = e => {
@@ -137,7 +90,6 @@ class Calculator extends Component {
                 </div>
                 <p>Resultado: {result} </p>
                 <button onClick={this.handleOnClick}>Calcular</button>
->>>>>>> 1cb635cbbdbb1a188e1e74c045424d1091b4dac3
             </div>
         );
     }
