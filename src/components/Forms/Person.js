@@ -33,8 +33,8 @@ class Person extends Component {
         
         this.setState({
             errors: {
-                Name: Name === '',
-                LastName: LastName === ''
+                Name: Name.trim() === '',
+                LastName: LastName.trim() === ''
             }
         })
 
@@ -70,7 +70,7 @@ class Person extends Component {
                         {
                             this.state.errors.Name
                             &&
-                            <div>Required</div>
+                            <div className='errorMessage'>Required</div>
                         }
                     </div>
                     <div>
@@ -89,7 +89,7 @@ class Person extends Component {
                         {
                             this.state.errors.LastName
                             &&
-                            <div>Required</div>
+                            <div className='errorMessage'>Required</div>
                         }
                     </div>
                     <div>
