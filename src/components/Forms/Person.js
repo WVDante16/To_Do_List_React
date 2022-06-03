@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Person.css';
+import Popup from 'react-popup';
+import './Popup.css';
 
 class Person extends Component {
     constructor(props) {
@@ -38,15 +40,23 @@ class Person extends Component {
             }
         })
 
-        if (Name && LastName) {
-            const data = {
-                Name, 
-                LastName, 
-                Email, 
-                Phone
-            }
-    
-            console.log('Data: ', data);
+        if (Name.trim() && LastName.trim()) {
+            Popup.create({
+                title: 'Person Information',
+                content: (
+                    <div>
+                        <p><strong>Name: </strong> {Name} {LastName} </p>
+                        <p><strong>Email: </strong> {Email} </p>
+                        {Phone && <p><strong>Phone: </strong> {Phone} </p>}
+                    </div>
+                ),
+                buttons: {
+                    right: [{
+                        text: 'Close',
+                        action: popup => popup.close() //Closes the popup
+                    }]
+                }
+            })
         }
     }
 

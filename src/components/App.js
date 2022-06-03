@@ -11,6 +11,7 @@ import Content from '../shared/layout/Content';
 //import Numbers from './PureComponent/Numbers';
 //import Calculator from './Calculator/Calculator';
 import Person from './Forms/Person';
+import Popup from 'react-popup';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
       <Content>
         <Person />
       </Content>
+
+      <Popup />
       
       <Footer />
     </div>
