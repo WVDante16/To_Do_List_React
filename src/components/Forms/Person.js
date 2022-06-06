@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import './Person.css';
-import Popup from 'react-popup';
 import './Popup.css';
 
 class Person extends Component {
@@ -11,14 +12,15 @@ class Person extends Component {
             LastName: '',
             Email: '',
             Phone: '',
+            Open: false,
 
             errors: {
                 Name: false,
                 LastName: false
             }
-        }
+        };
     }
-    
+
     handleOnChange = e => {
         const {target: {value, name}} = e;
         
@@ -41,28 +43,57 @@ class Person extends Component {
         })
 
         if (Name.trim() && LastName.trim()) {
-            Popup.create({
-                title: 'Person Information',
-                content: (
-                    <div>
-                        <p><strong>Name: </strong> {Name} {LastName} </p>
-                        <p><strong>Email: </strong> {Email} </p>
-                        {Phone && <p><strong>Phone: </strong> {Phone} </p>}
-                    </div>
-                ),
-                buttons: {
-                    right: [{
-                        text: 'Close',
-                        action: popup => popup.close() //Closes the popup
-                    }]
-                }
+            const data = {
+                Name,
+                LastName,
+                Email,
+                Phone 
+            };
+
+            this.setState({
+                Open: true
             })
-        }
+            console.log('Data: ', data);
+        } 
+
+        setTimeout(() => {
+            this.setState({
+                errors: {
+                    Name: false,
+                    LastName: false,
+                },
+            })
+        }, 3000)
     }
 
     render() {
         return (
             <div className='Person'>
+                
+                <Popup open={this.state.Open} modal nested>
+                    {close => (
+                        <div className="modal">
+                            <button className="close" onClick={() => {
+                                this.setState({
+                                    Open: false
+                                })
+                                close();
+                            }}>
+                                &times;
+                            </button>
+
+                            <div className="header">
+                                <h1>Person Information</h1>
+                            </div>
+
+                            <div className="content">
+                                <h1>Name: <span>{this.state.Name}</span><span>{this.state.LastName}</span></h1>
+                                <h1>Email: <span>{this.state.Email}</span></h1>
+                            </div>
+                        </div>
+                    )}
+                </Popup>
+                
                 <form onSubmit={this.handleOnSubmit}>
                     <div>
                         <label>
@@ -125,11 +156,11 @@ class Person extends Component {
                         </label>
                     </div>
                     <div>
-                        <button>Guardar UwU</button>
+                        <button type='submit'>Guardar UwU</button>
                     </div>
                 </form>
             </div>
-        );
+        )
     }
 }
 
